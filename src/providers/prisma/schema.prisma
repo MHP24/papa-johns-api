@@ -1,0 +1,22 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+
+model User {
+  userId String @id @default(uuid()) @map("user_id")
+  username String @map("user_name")
+  email String @unique @map("email")
+  password String @map("password")
+  roles String[] @default(["user"]) @map("roles")
+  createdAt DateTime @default(now()) @map("created_at")
+  lastAccess DateTime? @map("last_access")
+  lastLogout DateTime?  @map("last_logout")
+  isActive Boolean @default(true) @map("is_active")
+  @@map("users")
+}
