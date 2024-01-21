@@ -1,26 +1,47 @@
-import { Injectable } from '@nestjs/common';
-import { CreateAuthDto } from './dto/sign-in.dto';
-import { UpdateAuthDto } from './dto/sign-up.dto';
+import { BadRequestException, Injectable, Logger } from '@nestjs/common';
+import { SignInDto } from './dto/sign-in.dto';
+import { SignUpDto } from './dto/sign-up.dto';
+import { PrismaService } from '../../providers/prisma/prisma.service';
+import { Hasher } from '../adapters';
 
 @Injectable()
 export class AuthService {
-  create(createAuthDto: CreateAuthDto) {
-    return 'This action adds a new auth';
+  logger = new Logger(AuthService.name);
+
+  constructor(
+    private readonly prismaService: PrismaService,
+    private readonly hasher: Hasher,
+  ) {}
+
+  signIn(data: SignInDto) {
+    return data;
   }
 
-  findAll() {
-    return `This action returns all auth`;
-  }
+  async signUp(data: SignUpDto) {
+    try {
+      // * Password hashing
+      const { password, ...rest } = data;
+      const passwordHashed = this.hasher.hash(password);
 
-  findOne(id: number) {
-    return `This action returns a #${id} auth`;
-  }
+      // * DB creation attempt
+      await this.prismaService.user.create({
+        data: {
+          ...rest,
+          password: passwordHashed,
+        },
+      });
 
-  update(id: number, updateAuthDto: UpdateAuthDto) {
-    return `This action updates a #${id} auth`;
-  }
-
-  remove(id: number) {
-    return `This action removes a #${id} auth`;
+      // * JWT using basic user data
+      // TODO: Generate JWT
+      return data;
+    } catch (error) {
+      if (error.code === 'P2002') {
+        throw new BadRequestException(
+          `Usuario con email: ${data.email} ya se encuentra registrado`,
+        );
+      }
+      this.logger.error(error);
+      throw new BadRequestException();
+    }
   }
 }

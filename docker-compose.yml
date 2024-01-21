@@ -12,4 +12,4 @@ services:
     ports:
       - ${DB_PORT}:5432
     volumes:
-      - ./etc/db:/var/lib/postgresql
+      - ./etc:/var/lib/postgresql

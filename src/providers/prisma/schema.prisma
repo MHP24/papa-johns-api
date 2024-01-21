@@ -13,10 +13,10 @@ model User {
   username String @map("user_name")
   email String @unique @map("email")
   password String @map("password")
-  roles String[] @map("roles")
+  roles String[] @default(["user"]) @map("roles")
   createdAt DateTime @default(now()) @map("created_at")
-  lastAccess DateTime @map("last_access")
-  lastLogout DateTime @map("last_logout")
+  lastAccess DateTime? @map("last_access")
+  lastLogout DateTime?  @map("last_logout")
   isActive Boolean @default(true) @map("is_active")
   @@map("users")
 }
