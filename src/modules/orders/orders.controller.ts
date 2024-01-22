@@ -1,7 +1,17 @@
-import { Controller, Get, Post, Body, Patch, Param, Delete } from '@nestjs/common';
+import {
+  Controller,
+  Get,
+  Post,
+  Body,
+  Patch,
+  Param,
+  Delete,
+} from '@nestjs/common';
 import { OrdersService } from './orders.service';
 import { CreateOrderDto } from './dto/create-order.dto';
 import { UpdateOrderDto } from './dto/update-order.dto';
+import { Auth } from 'src/common/auth/decorators/auth.decorator';
+import { ValidRoles } from 'src/common/auth/interfaces';
 
 @Controller('orders')
 export class OrdersController {
@@ -13,6 +23,7 @@ export class OrdersController {
   }
 
   @Get()
+  @Auth(ValidRoles.user, ValidRoles.superUser)
   findAll() {
     return this.ordersService.findAll();
   }
