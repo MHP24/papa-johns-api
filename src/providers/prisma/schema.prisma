@@ -23,7 +23,7 @@ model User {
 
 // * Product & Category model
 model Category {
-  categoryId String    @id @default(uuid()) @map("category_id")
+  categoryId Int       @id @map("category_id")
   name       String    @map("name")
   product    Product[]
 
@@ -37,7 +37,7 @@ model Product {
   price       Int      @map("price")
   description String   @map("description")
   image       String   @map("image")
-  categoryId  String
+  categoryId  Int      @map("category_id")
   category    Category @relation(fields: [categoryId], references: [categoryId])
 
   @@map("products")

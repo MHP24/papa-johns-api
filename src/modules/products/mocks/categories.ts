@@ -1,8 +1,28 @@
-export const seedCategories = {
-  1: 'promociones',
-  2: 'pizzas',
-  3: 'acompañamientos',
-  4: 'bebidas',
-  5: 'postres',
-  6: 'extras',
-};
+import { Category } from '../types/category';
+
+export const seedCategories: Category[] = [
+  {
+    categoryId: 1,
+    name: 'promociones',
+  },
+  {
+    categoryId: 2,
+    name: 'pizzas',
+  },
+  {
+    categoryId: 3,
+    name: 'acompañamientos',
+  },
+  {
+    categoryId: 4,
+    name: 'bebidas',
+  },
+  {
+    categoryId: 5,
+    name: 'postres',
+  },
+  {
+    categoryId: 6,
+    name: 'extras',
+  },
+];
