@@ -1,23 +1,16 @@
-import { Controller, Get, Post, Body, Param } from '@nestjs/common';
+import { Controller, Post, Body } from '@nestjs/common';
 import { OrdersService } from './orders.service';
 import { CreateOrderDto } from './dto/create-order.dto';
+import { Auth, User } from 'src/common/auth/decorators';
+import type { User as UserT } from '@prisma/client';
 
 @Controller('orders')
 export class OrdersController {
   constructor(private readonly ordersService: OrdersService) {}
 
   @Post('/create')
-  create(@Body() createOrderDto: CreateOrderDto) {
-    return this.ordersService.create(createOrderDto);
-  }
-
-  @Get('')
-  findAll() {
-    return this.ordersService.findAll();
-  }
-
-  @Get(':orderId')
-  findOne(@Param('orderId') orderId: string) {
-    return this.ordersService.findOne(+orderId);
+  @Auth()
+  create(@Body() createOrderDto: CreateOrderDto, @User() user: UserT) {
+    return this.ordersService.createOrder(createOrderDto, user);
   }
 }

@@ -20,7 +20,6 @@ export class JwtStrategy extends PassportStrategy(Strategy) {
 
   async validate(payload: { userId: string }): Promise<Omit<User, 'password'>> {
     const user = await this.authService.findAndValidateUser(payload.userId);
-    console.log({ user });
     delete user['password'];
     return user;
   }
