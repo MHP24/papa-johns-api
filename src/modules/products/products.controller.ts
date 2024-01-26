@@ -6,8 +6,12 @@ export class ProductsController {
   constructor(private readonly productsService: ProductsService) {}
 
   @Get()
-  findAll(@Query('limit') limit: string, @Query('offset') offset: string) {
-    return this.productsService.findAll(limit, offset);
+  findAll(
+    @Query('limit') limit: string,
+    @Query('offset') offset: string,
+    @Query('search') search: string,
+  ) {
+    return this.productsService.findAll(limit, offset, search);
   }
 
   @Get('/:slug')

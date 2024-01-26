@@ -1,4 +1,4 @@
-import { Product } from '../types/product';
+import { Product } from 'src/common/types';
 
 export const seedProducts: Product[] = [
   {

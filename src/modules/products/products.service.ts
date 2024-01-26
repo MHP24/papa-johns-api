@@ -6,7 +6,7 @@ export class ProductsService {
   constructor(private readonly prismaService: PrismaService) {}
 
   // * Will return products between range (limit ,offset)
-  async findAll(limit?: string, offset?: string) {
+  async findAll(limit?: string, offset?: string, search?: string) {
     const queryLimits = this.validateLimitAndOffset(limit, offset);
 
     const products = await this.prismaService.product.findMany({
@@ -15,6 +15,12 @@ export class ProductsService {
           select: {
             name: true,
           },
+        },
+      },
+      // * Basic search filter
+      where: {
+        name: {
+          contains: search ?? '',
         },
       },
       ...queryLimits,

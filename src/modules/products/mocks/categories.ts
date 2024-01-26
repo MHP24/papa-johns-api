@@ -1,6 +1,6 @@
-import { Category } from '../types/category';
+import { ProductCategory } from 'src/common/types';
 
-export const seedCategories: Category[] = [
+export const seedCategories: ProductCategory[] = [
   {
     categoryId: 1,
     name: 'promociones',

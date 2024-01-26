@@ -17,6 +17,7 @@ model User {
   lastAccess DateTime? @map("last_access")
   lastLogout DateTime? @map("last_logout")
   isActive   Boolean   @default(true) @map("is_active")
+  orders     Order[]
 
   @@map("users")
 }
