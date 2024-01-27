@@ -7,16 +7,51 @@ datasource db {
   url      = env("DATABASE_URL")
 }
 
-
 model User {
-  userId String @id @default(uuid()) @map("user_id")
-  username String @map("user_name")
-  email String @unique @map("email")
-  password String @map("password")
-  roles String[] @default(["user"]) @map("roles")
-  createdAt DateTime @default(now()) @map("created_at")
+  userId     String    @id @default(uuid()) @map("user_id")
+  username   String    @map("user_name")
+  email      String    @unique @map("email")
+  password   String    @map("password")
+  roles      String[]  @default(["user"]) @map("roles")
+  createdAt  DateTime  @default(now()) @map("created_at")
   lastAccess DateTime? @map("last_access")
-  lastLogout DateTime?  @map("last_logout")
-  isActive Boolean @default(true) @map("is_active")
+  lastLogout DateTime? @map("last_logout")
+  isActive   Boolean   @default(true) @map("is_active")
+  orders     Order[]
+
   @@map("users")
+}
+
+// * Product & Category model
+model Category {
+  categoryId Int       @id @map("category_id")
+  name       String    @map("name")
+  product    Product[]
+
+  @@map("categories")
+}
+
+model Product {
+  productId   String   @id @default(uuid()) @map("product_id")
+  slug        String   @unique @map("slug")
+  name        String   @map("name")
+  price       Int      @map("price")
+  description String   @map("description")
+  image       String   @map("image")
+  categoryId  Int      @map("category_id")
+  category    Category @relation(fields: [categoryId], references: [categoryId])
+
+  @@map("products")
+}
+
+// * Order model (all shopping cart products with total price)
+model Order {
+  orderId      String   @id @default(uuid()) @map("order_id")
+  products     Json     @map("products")
+  total        Int      @map("total")
+  purchaseDate DateTime @default(now()) @map("purchase_date")
+  userId       String   @map("user_id")
+  user         User     @relation(fields: [userId], references: [userId])
+
+  @@map("orders")
 }

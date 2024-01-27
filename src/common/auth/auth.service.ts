@@ -1,4 +1,9 @@
-import { BadRequestException, Injectable, Logger } from '@nestjs/common';
+import {
+  BadRequestException,
+  Injectable,
+  Logger,
+  UnauthorizedException,
+} from '@nestjs/common';
 import { SignInDto } from './dto/sign-in.dto';
 import { SignUpDto } from './dto/sign-up.dto';
 import { PrismaService } from '../../providers/prisma/prisma.service';
@@ -16,21 +21,19 @@ export class AuthService {
     private readonly jwtService: JwtService,
   ) {}
 
-  async signIn(data: SignInDto) {
+  async signIn({ email, password }: SignInDto) {
     try {
-      const { email, password } = data;
       const user = await this.prismaService.user.findUnique({
         where: { email, isActive: true },
       });
 
+      // * User credentials validation
       const isValidPassword = this.hasher.compare(
         password,
         user?.password ?? '',
       );
-
-      // * User credentials validation
       if (!user || !isValidPassword)
-        throw new BadRequestException('Correo o contraseña inválida');
+        throw new UnauthorizedException('Correo o contraseña inválida');
 
       // * JWT using based on user data
       return this.generateJwt(user);
@@ -69,6 +72,15 @@ export class AuthService {
     }
   }
 
+  async findAndValidateUser(userId: string) {
+    const user = await this.prismaService.user.findUnique({
+      where: { userId, isActive: true },
+    });
+
+    if (!user) throw new UnauthorizedException();
+    return user;
+  }
+
   generateJwt(user: User) {
     const { userId, username, email, roles } = user;
     return {
@@ -78,7 +90,7 @@ export class AuthService {
         email,
         roles,
       },
-      jwt: this.jwtService.sign({ userId }),
+      token: this.jwtService.sign({ userId }),
     };
   }
 }

@@ -7,6 +7,8 @@ import { PrismaModule } from './providers/prisma/prisma.module';
 import { OrdersModule } from './modules/orders/orders.module';
 import { ProductsModule } from './modules/products/products.module';
 import { AuthModule } from './common/auth/auth.module';
+import { SeedModule } from './modules/seed/seed.module';
+import { FilesModule } from './modules/files/files.module';
 
 @Module({
   imports: [
@@ -18,6 +20,8 @@ import { AuthModule } from './common/auth/auth.module';
     OrdersModule,
     AuthModule,
     ProductsModule,
+    SeedModule,
+    FilesModule,
   ],
   controllers: [],
   providers: [],

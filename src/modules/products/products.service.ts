@@ -1,26 +1,77 @@
-import { Injectable } from '@nestjs/common';
-import { CreateProductDto } from './dto/create-product.dto';
-import { UpdateProductDto } from './dto/update-product.dto';
+import { Injectable, NotFoundException } from '@nestjs/common';
+import { PrismaService } from 'src/providers/prisma/prisma.service';
 
 @Injectable()
 export class ProductsService {
-  create(createProductDto: CreateProductDto) {
-    return 'This action adds a new product';
+  constructor(private readonly prismaService: PrismaService) {}
+
+  // * Will return products between range (limit ,offset)
+  async findAll(limit?: string, offset?: string, search?: string) {
+    const queryLimits = this.validateLimitAndOffset(limit, offset);
+
+    const products = await this.prismaService.product.findMany({
+      include: {
+        category: {
+          select: {
+            name: true,
+          },
+        },
+      },
+      // * Basic search filter
+      where: {
+        name: {
+          contains: search ?? '',
+        },
+      },
+      ...queryLimits,
+    });
+    if (!products.length) this.notFound();
+    return products;
   }
 
-  findAll() {
-    return `This action returns all products`;
+  // * Will return 1 product (slug unique by bd constraint)
+  async findBySlug(slug: string) {
+    const product = await this.prismaService.product.findUnique({
+      where: { slug },
+    });
+    if (!product) this.notFound();
+    return product;
   }
 
-  findOne(id: number) {
-    return `This action returns a #${id} product`;
+  // * Will return 1 product searched by id
+  async findById(productId: string) {
+    const product = await this.prismaService.product.findUnique({
+      where: { productId },
+    });
+
+    if (!product) this.notFound();
+    return product;
   }
 
-  update(id: number, updateProductDto: UpdateProductDto) {
-    return `This action updates a #${id} product`;
+  // * Can return more than 1 (supports limit, offset handling)
+  async findByCategory(category: string, limit?: string, offset?: string) {
+    const queryLimits = this.validateLimitAndOffset(limit, offset);
+
+    const products = await this.prismaService.product.findMany({
+      where: {
+        category: {
+          name: category,
+        },
+      },
+      ...queryLimits,
+    });
+    if (!products.length) this.notFound();
+    return products;
   }
 
-  remove(id: number) {
-    return `This action removes a #${id} product`;
+  // * Prevent "DRY" methods...
+  notFound() {
+    throw new NotFoundException('Sin resultados');
+  }
+
+  validateLimitAndOffset(limit?: string, offset?: string) {
+    const skip = isNaN(+offset) ? 1 : +offset;
+    const take = isNaN(+limit) ? 5 : +limit;
+    return { skip, take };
   }
 }
