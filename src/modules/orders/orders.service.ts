@@ -2,6 +2,7 @@ import {
   BadRequestException,
   Injectable,
   InternalServerErrorException,
+  NotFoundException,
 } from '@nestjs/common';
 import { CreateOrderDto } from './dto/create-order.dto';
 import { PrismaService } from 'src/providers/prisma/prisma.service';
@@ -14,7 +15,7 @@ export class OrdersService {
   constructor(private readonly prismaService: PrismaService) {}
 
   // * Main order creation method
-  async createOrder({ products }: CreateOrderDto, user: User) {
+  async handleOrderCreation({ products }: CreateOrderDto, user: User) {
     const dbProducts = await this.findProducts(products.map(({ id }) => id));
 
     if (!dbProducts.length || products.length > dbProducts.length) {
@@ -70,6 +71,37 @@ export class OrdersService {
     ]);
   }
 
+  // TODO: Add thumbnail
+
   // * Other methods to get or handke data
   //* distinct of order creation process
+  async findOrdersByUser({ userId }: User) {
+    const orders = await this.prismaService.order.findMany({
+      where: {
+        userId,
+      },
+    });
+
+    if (!orders.length)
+      throw new NotFoundException('Aún no has realizado un pedido');
+
+    return { orders };
+  }
+
+  // TODO: Add thumbnail
+  // * Order by specific id
+  async findOrderById(orderId: string) {
+    const order = await this.prismaService.order.findUnique({
+      where: {
+        orderId,
+      },
+    });
+
+    if (!order)
+      throw new NotFoundException(
+        'Este pedido no existe o ya no extá disponible',
+      );
+
+    return { order };
+  }
 }

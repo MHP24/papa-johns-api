@@ -1,16 +1,36 @@
-import { Controller, Post, Body } from '@nestjs/common';
+import {
+  Controller,
+  Post,
+  Body,
+  Get,
+  Param,
+  ParseUUIDPipe,
+} from '@nestjs/common';
 import { OrdersService } from './orders.service';
 import { CreateOrderDto } from './dto/create-order.dto';
 import { Auth, User } from 'src/common/auth/decorators';
 import type { User as UserT } from '@prisma/client';
+import { ValidRoles } from 'src/common/auth/interfaces';
 
 @Controller('orders')
 export class OrdersController {
   constructor(private readonly ordersService: OrdersService) {}
 
   @Post('/create')
-  @Auth()
+  @Auth(ValidRoles.user)
   create(@Body() createOrderDto: CreateOrderDto, @User() user: UserT) {
-    return this.ordersService.createOrder(createOrderDto, user);
+    return this.ordersService.handleOrderCreation(createOrderDto, user);
+  }
+
+  @Get()
+  @Auth(ValidRoles.user)
+  findAll(@User() user: UserT) {
+    return this.ordersService.findOrdersByUser(user);
+  }
+
+  @Get('/:orderId')
+  @Auth()
+  findOne(@Param('orderId', ParseUUIDPipe) orderId: string) {
+    return this.ordersService.findOrderById(orderId);
   }
 }
