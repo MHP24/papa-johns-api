@@ -15,6 +15,11 @@ export class SeedService {
   async generateSeedProducts() {
     try {
       await this.prismaService.$transaction([
+        // * Data reset
+        this.prismaService.product.deleteMany({}),
+        this.prismaService.category.deleteMany({}),
+
+        // * Data insert
         this.prismaService.category.createMany({
           data: seedCategories,
         }),
