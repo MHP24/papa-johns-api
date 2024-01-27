@@ -12,3 +12,8 @@ export type ProductCategory = {
   categoryId: number;
   name: string;
 };
+
+export type CartProduct = {
+  id: string;
+  quantity: number;
+};

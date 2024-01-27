@@ -19,6 +19,11 @@ export class ProductsController {
     return this.productsService.findBySlug(slug);
   }
 
+  @Get('/:id')
+  findById(@Param('id') id: string) {
+    return this.productsService.findById(id);
+  }
+
   @Get('/category/:category')
   findByCategory(
     @Param('category') category: string,

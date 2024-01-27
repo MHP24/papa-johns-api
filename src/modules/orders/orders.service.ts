@@ -6,8 +6,7 @@ import {
 } from '@nestjs/common';
 import { CreateOrderDto } from './dto/create-order.dto';
 import { PrismaService } from 'src/providers/prisma/prisma.service';
-import { Product } from '../../common/types';
-import { ProductDto } from '../products/dto';
+import { CartProduct, Product } from '../../common/types';
 import { User } from '@prisma/client';
 
 @Injectable()
@@ -50,7 +49,7 @@ export class OrdersService {
   // * Calc cart handling quantity and price from database
   calculateProductsInCart(
     storedProducts: Product[],
-    productsFromCart: ProductDto[],
+    productsFromCart: CartProduct[],
   ) {
     return storedProducts.reduce((acc: number, { productId, price }) => {
       return (acc +=
@@ -59,19 +58,17 @@ export class OrdersService {
   }
 
   // * Order creation process
-  async saveOrder(cart: ProductDto[], total: number, user: User) {
+  async saveOrder(cart: CartProduct[], total: number, user: User) {
     await this.prismaService.$transaction([
       this.prismaService.order.create({
         data: {
-          products: JSON.stringify({ cart }),
+          products: { cart },
           total,
           userId: user.userId,
         },
       }),
     ]);
   }
-
-  // TODO: Add thumbnail
 
   // * Other methods to get or handke data
   //* distinct of order creation process
@@ -80,6 +77,10 @@ export class OrdersService {
       where: {
         userId,
       },
+      orderBy: {
+        purchaseDate: 'desc',
+      },
+      take: 10,
     });
 
     if (!orders.length)
@@ -88,7 +89,6 @@ export class OrdersService {
     return { orders };
   }
 
-  // TODO: Add thumbnail
   // * Order by specific id
   async findOrderById(orderId: string) {
     const order = await this.prismaService.order.findUnique({
