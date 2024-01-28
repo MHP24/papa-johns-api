@@ -1,0 +1,6 @@
+dist/
+etc/
+node_modules/
+.env
+.env.stage
+yarn.lock

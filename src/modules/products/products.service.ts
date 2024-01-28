@@ -38,16 +38,6 @@ export class ProductsService {
     return product;
   }
 
-  // * Will return 1 product searched by id
-  async findById(productId: string) {
-    const product = await this.prismaService.product.findUnique({
-      where: { productId },
-    });
-
-    if (!product) this.notFound();
-    return product;
-  }
-
   // * Can return more than 1 (supports limit, offset handling)
   async findByCategory(category: string, limit?: string, offset?: string) {
     const queryLimits = this.validateLimitAndOffset(limit, offset);

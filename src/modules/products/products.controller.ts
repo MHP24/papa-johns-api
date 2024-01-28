@@ -1,10 +1,11 @@
 import { Controller, Get, Param, Query } from '@nestjs/common';
 import { ProductsService } from './products.service';
+import { ApiTags } from '@nestjs/swagger';
 
+@ApiTags('products')
 @Controller('products')
 export class ProductsController {
   constructor(private readonly productsService: ProductsService) {}
-
   @Get()
   findAll(
     @Query('limit') limit: string,
@@ -17,11 +18,6 @@ export class ProductsController {
   @Get('/:slug')
   findBySlug(@Param('slug') slug: string) {
     return this.productsService.findBySlug(slug);
-  }
-
-  @Get('/:id')
-  findById(@Param('id') id: string) {
-    return this.productsService.findById(id);
   }
 
   @Get('/category/:category')

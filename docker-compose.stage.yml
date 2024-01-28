@@ -1,0 +1,27 @@
+version: '3.4'
+
+services:
+  db:
+    restart: always
+    container_name: ${DB_NAME}
+    image: postgres:13.13
+    env_file:
+      - .env.stage
+    environment:
+      POSTGRES_USER: ${DB_USER}
+      POSTGRES_PASSWORD: ${DB_PASSWORD}
+      POSTGRES_DB: ${DB_NAME}
+    ports:
+      - ${DB_PORT}:5432
+    volumes:
+      - ./etc:/var/lib/postgresql
+  app:
+    restart: always
+    depends_on:
+      - db
+    container_name: papa_docker
+    image: papa_docker:latest
+    env_file:
+      - .env.stage
+    ports:
+      - ${PORT}:${PORT}

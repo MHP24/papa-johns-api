@@ -37,4 +37,5 @@ lerna-debug.log*
 # Environment configuration
 etc/
 .env
+.env.stage
 /src/providers/prisma/migrations/*

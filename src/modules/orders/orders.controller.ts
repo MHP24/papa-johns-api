@@ -11,7 +11,10 @@ import { CreateOrderDto } from './dto/create-order.dto';
 import { Auth, User } from 'src/common/auth/decorators';
 import type { User as UserT } from '@prisma/client';
 import { ValidRoles } from 'src/common/auth/interfaces';
+import { ApiBearerAuth, ApiTags } from '@nestjs/swagger';
 
+@ApiTags('orders')
+@ApiBearerAuth()
 @Controller('orders')
 export class OrdersController {
   constructor(private readonly ordersService: OrdersService) {}

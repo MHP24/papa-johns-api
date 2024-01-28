@@ -2,230 +2,195 @@ import { Product } from 'src/common/types';
 
 export const seedProducts: Product[] = [
   {
-    name: 'Hot Week!',
-    slug: 'hot-week',
-    price: 15950,
-    description:
-      'Compra una pizza familiar de 3ing y lleva de regalo una pizza mediana',
-    image: 'caluga_web_1600_x_600_1_1705333610_small.png',
-    categoryId: 1,
-  },
-  {
-    name: 'Pizza del Mes - Super Pepperoni.',
     slug: 'pizza-del-mes-super-pepperoni',
+    name: 'Pizza del Mes - Super Pepperoni.',
     price: 10990,
     description:
       'Una pizza especialidad familiar al mes a un precio increíble.',
-    image: 'caluga_web_1600_x_600_1704717078_small.jpg',
+    image: 'pizza-del-mes-super-pepperoni.jpg',
     categoryId: 1,
   },
   {
-    name: 'Super Trio',
     slug: 'super-trio',
+    name: 'Super Trio',
     price: 29970,
     description: '3 especialidades familiares (3 ing) por $29.970',
-    image: 'mesa_de_trabajo_33_1696422551.jpg',
+    image: 'super-trio.jpg',
     categoryId: 1,
   },
   {
-    name: 'Super Duo',
     slug: 'super-duo',
+    name: 'Super Duo',
     price: 20990,
     description: '2 especialidades familiares (3 ing) por $18.990',
-    image: 'copia_de_kvsuperduo_calugaweb_1600x600_1693831007.jpg',
+    image: 'super-duo.jpg',
     categoryId: 1,
   },
   {
-    name: 'Super Duo + Sprite Zero de Regalo!',
-    slug: 'super-duo-sprite-zero-de-regalo',
-    price: 20990,
-    description:
-      '2 Pizzas familiares (3 ing) por $18.990 + six pack de Sprite Zero de regalo!',
-    image: 'caluga_web_1600_x_600_1_1703615165_small.png',
-    categoryId: 1,
-  },
-  {
-    name: 'Papa Combo',
     slug: 'papa-combo',
+    name: 'Papa Combo',
     price: 16890,
     description: 'Pizza de 3 ingredientes, acompañamiento simple más bebida.',
-    image: 'combopalitos_1687539807.jpg',
+    image: 'papa-combo.jpg',
     categoryId: 1,
   },
   {
-    name: 'Combo Rolls',
-    slug: 'combo-rolls',
-    price: 21490,
-    description:
-      'Rolls de Pepperoni o Jamón, Pizza familiar de 3 Ingredientes y Bebida de 2.5 lts.',
-    image: 'comborolls_2_1687539894.jpg',
-    categoryId: 1,
-  },
-  {
-    name: 'Combo Premium',
-    slug: 'combo-premium',
-    price: 23990,
-    description: 'Elige tu promo de pizza 3 ing + bebida + Brownie.',
-    image: 'combobrownie_1687549310.jpg',
-    categoryId: 1,
-  },
-  {
-    name: 'Big Combo',
     slug: 'big-combo',
+    name: 'Big Combo',
     price: 47900,
     description: 'Selecciona 5 pizzas de especialidad de 2 o 3 ingredientes!',
-    image: 'bigcombo_1_1687549234.jpg',
+    image: 'big-combo.jpg',
     categoryId: 1,
   },
   {
-    name: 'Combo Red Bull',
     slug: 'combo-red-bull',
+    name: 'Combo Red Bull',
     price: 28900,
     description: 'Combo Red Bull',
-    image: 'calugaweb__1600x60080_1696945342.jpg',
+    image: 'combo-red-bull.jpg',
     categoryId: 1,
   },
   {
-    name: 'Garlic Fugazza',
     slug: 'garlic-fugazza',
+    name: 'Garlic Fugazza',
     price: 12950,
     description:
       'Salsa garlic parmesan de base, extra cebolla fresca, queso mozzarella y un toque de orégano.',
-    image: 'garlicfugazza_1691158943.jpg',
+    image: 'garlic-fugazza.jpg',
     categoryId: 2,
   },
   {
-    name: 'La Cordillerana',
     slug: 'la-cordillerana',
+    name: 'La Cordillerana',
     price: 15950,
     description: 'Delicioso chorizo, carne, pimentón y cebolla',
-    image: 'lacordillerana_1691158882.jpg',
+    image: 'la-cordillerana.jpg',
     categoryId: 2,
   },
   {
-    name: 'Vegan BBQ Shot',
     slug: 'vegan-bbq-shot',
+    name: 'Vegan BBQ Shot',
     price: 17450,
     description:
       'Delicioso NotChicken acompañado de aceitunas negras, cebolla, queso vegano y shot de bbq',
-    image: 'veganbbqshot_1691158917.jpg',
+    image: 'vegan-bbq-shot.jpg',
     categoryId: 2,
   },
   {
-    name: 'The Vegan Royal',
     slug: 'the-vegan-royal',
+    name: 'The Vegan Royal',
     price: 17450,
     description:
       'Champiñon, pimiento verde, aceitunas negras, Not Meat (carne plant based) y queso vegano.',
-    image: 'royalvegan_1691158603.jpg',
+    image: 'the-vegan-royal.jpg',
     categoryId: 2,
   },
   {
-    name: 'Napolitana Cherry',
     slug: 'napolitana-cherry',
+    name: 'Napolitana Cherry',
     price: 12950,
     description: 'Queso mozzarella, orégano y tomate cherry.',
-    image: 'napolitanacherry_1691158722.jpg',
+    image: 'napolitana-cherry.jpg',
     categoryId: 2,
   },
   {
-    name: 'Todas las Carnes',
     slug: 'todas-las-carnes',
+    name: 'Todas las Carnes',
     price: 17450,
     description:
       'Queso mozzarella, pepperoni, jamón, tocino, salchicha italiana.',
-    image: 'todaslascarnes_1691158364.jpg',
+    image: 'todas-las-carnes.jpg',
     categoryId: 2,
   },
   {
-    name: 'Italiana',
     slug: 'italiana',
+    name: 'Italiana',
     price: 17450,
     description:
       'Queso mozzarella, orégano, pepperoni, salchicha italiana, aceitunas negras, champiñón.',
-    image: 'italiana_1691158403.jpg',
+    image: 'italiana.jpg',
     categoryId: 2,
   },
   {
-    name: 'Super Pepperoni',
     slug: 'super-pepperoni',
+    name: 'Super Pepperoni',
     price: 15950,
     description: 'Extra queso mozzarella, doble pepperoni.',
-    image: 'superpepperoni_1691158011.jpg',
+    image: 'super-pepperoni.jpg',
     categoryId: 2,
   },
   {
-    name: 'The Works',
     slug: 'the-works',
+    name: 'The Works',
     price: 20450,
     description:
       'Queso mozzarella, pepperoni, jamón, salchicha italiana, cebolla, pimiento verde, aceitunas negras, champiñón.',
-    image: 'theworks_1691159742.jpg',
+    image: 'the-works.jpg',
     categoryId: 2,
   },
   {
-    name: 'Mechada Luco',
     slug: 'mechada-luco',
+    name: 'Mechada Luco',
     price: 17450,
     description:
       'Doble porción de carne mechada, queso mozzarella y queso parmesano y romano',
-    image: 'mechadaluco_1691158851.jpg',
+    image: 'mechada-luco.jpg',
     categoryId: 2,
   },
   {
-    name: 'Chicken Garlic',
     slug: 'chicken-garlic',
+    name: 'Chicken Garlic',
     price: 15950,
     description:
       'Extra salsa, doble pollo grillados, salsa garlic, queso mozzarella y queso parmesano/romano.',
-    image: 'chickengarlic_1691158515.jpg',
+    image: 'chicken-garlic.jpg',
     categoryId: 2,
   },
   {
-    name: 'Hawaiana',
     slug: 'hawaiana',
+    name: 'Hawaiana',
     price: 15950,
     description: 'Piña, jamón y extra queso mozzarella.',
-    image: 'hawaiana_1691158484.jpg',
+    image: 'hawaiana.jpg',
     categoryId: 2,
   },
   {
-    name: 'Napolitana',
     slug: 'napolitana',
+    name: 'Napolitana',
     price: 12950,
     description: 'Queso mozzarella, orégano, tomate.',
-    image: 'napolitana_1691158448.jpg',
+    image: 'napolitana.jpg',
     categoryId: 2,
   },
   {
-    name: 'Vegetariana',
     slug: 'vegetariana',
+    name: 'Vegetariana',
     price: 17450,
     description:
       'Queso mozzarella, cebolla, pimiento verde, tomate, aceitunas negras, champiñon',
-    image: 'vegetariana_1691158330.jpg',
+    image: 'vegetariana.jpg',
     categoryId: 2,
   },
   {
-    name: 'Pollo BBQ',
     slug: 'pollo-bbq',
+    name: 'Pollo BBQ',
     price: 15950,
     description: 'Queso mozzarella, pollo, tocino, cebolla, salsa bbq',
-    image: 'pollobbq_1691158286.jpg',
+    image: 'pollo-bbq.jpg',
     categoryId: 2,
   },
   {
-    name: 'Canadian Bacon',
     slug: 'canadian-bacon',
+    name: 'Canadian Bacon',
     price: 15950,
     description:
       'Queso mozzarella, lomito canadiense, tocino, queso parmesano y romano',
-    image: 'canadianbacon_1691158568.jpg',
+    image: 'canadian-bacon.jpg',
     categoryId: 2,
   },
   {
     slug: 'pesto-rolls',
-    image: 'caluga_1600x600_1695650208.jpg',
+    image: 'pesto-rolls.jpg',
     description: 'Deliciosos rolls de pesto y queso mozzarella',
     price: 5290,
     name: 'Pesto Rolls',
@@ -233,7 +198,7 @@ export const seedProducts: Product[] = [
   },
   {
     slug: 'papadia-pollo-bbq',
-    image: 'papadias_pollobbq_1597354333.jpg',
+    image: 'papadia-pollo-bbq.jpg',
     description: 'Salsa BBQ, pollo, tocino, cebolla y queso mozzarella.',
     price: 7490,
     name: 'Papadia - Pollo BBQ',
@@ -245,7 +210,7 @@ export const seedProducts: Product[] = [
     description:
       'Palitos de pan horneados cubiertos con salsa de ajo y acompañada de 2 cups de salsas de tomate.',
     price: 4590,
-    image: 'palitosdeajo_1691159558.jpg',
+    image: 'palitos-ajo-queso.jpg',
     categoryId: 3,
   },
   {
@@ -254,12 +219,12 @@ export const seedProducts: Product[] = [
     description:
       'Masa 100% fresca Papa Johns, salsa de ajo especial y mozzarella, servida con salsa de pizza y salsa de ajo.',
     price: 5990,
-    image: 'palitosdequeso_1691159236.jpg',
+    image: 'palitos-queso.jpg',
     categoryId: 3,
   },
   {
     slug: 'papa-fries',
-    image: 'papas_1688672775.jpg2.jpg',
+    image: 'papa-fries.jpg',
     description: 'Papas horneadas',
     price: 3490,
     name: 'Papa Fries',
@@ -271,7 +236,7 @@ export const seedProducts: Product[] = [
     description:
       '12 deliciosos trozos de pechuga de pollo apanados, horneados y acompañados de salsa BBQ.',
     price: 6590,
-    image: 'chickenpoppers_1691161348_1695835004.jpg',
+    image: 'chicken-poppers.jpg',
     categoryId: 3,
   },
   {
@@ -280,7 +245,7 @@ export const seedProducts: Product[] = [
     description:
       'Tus palitos de queso mozzarella de siempre, ahora acompañados de un vegetal o shot a tu elección',
     price: 6990,
-    image: 'cheesyveggies_1691160591.jpg',
+    image: 'cheesy-veggies.jpg',
     categoryId: 3,
   },
   {
@@ -289,7 +254,7 @@ export const seedProducts: Product[] = [
     description:
       '8 Rolls rellenos de queso mozzarella y nuestra exquisita masa fresca. Elígelos rellenos con Pepperoni o Jamón.',
     price: 5290,
-    image: 'rolls_1691159273.jpg',
+    image: 'rolls.jpg',
     categoryId: 3,
   },
   {
@@ -298,7 +263,7 @@ export const seedProducts: Product[] = [
     description:
       '6 deliciosas alitas de pollo acompañadas de cups de salsa BBQ.',
     price: 5990,
-    image: 'alitasdepollo_1691159645.jpg',
+    image: 'alitas-pollo.jpg',
     categoryId: 3,
   },
   {
@@ -307,13 +272,13 @@ export const seedProducts: Product[] = [
     description:
       "Masa 100% fresca Papa John's, salsa de ajo especial, mozzarella y tocino, servida con salsa de pizza y salsa de ajo.",
     price: 7490,
-    image: 'palitosdequesoytocino_1691159612.jpg',
+    image: 'palitos-queso-tocino.jpg',
     categoryId: 3,
   },
   {
     slug: 'red-bull',
     name: 'Red Bull',
-    image: 'captura_1695737477.png',
+    image: 'red-bull.jpg',
     description: '',
     price: 1990,
     categoryId: 4,
@@ -321,7 +286,7 @@ export const seedProducts: Product[] = [
   {
     slug: 'fanta',
     name: 'Fanta',
-    image: 'fanta_1691161536.jpg',
+    image: 'fanta.jpg',
     description: 'La más increíble bebida con sabor a naranja de Coca-Cola.',
     price: 2090,
     categoryId: 4,
@@ -329,7 +294,7 @@ export const seedProducts: Product[] = [
   {
     slug: 'sprite-zero',
     name: 'Sprite Zero',
-    image: 'spritezero_1691161502.jpg',
+    image: 'sprite-zero.jpg',
     description:
       'La bebida lima-limón más famosa del mundo en su versión zero azúcar.',
     price: 2090,
@@ -338,7 +303,7 @@ export const seedProducts: Product[] = [
   {
     slug: 'coca-cola',
     name: 'Coca-Cola',
-    image: 'cocacolaoriginal_1691161152.jpg',
+    image: 'coca-cola.jpg',
     description: 'La más clásica bebida en su receta original.',
     price: 2090,
     categoryId: 4,
@@ -346,7 +311,7 @@ export const seedProducts: Product[] = [
   {
     slug: 'sprite',
     name: 'Sprite',
-    image: 'sprite_1691161465.jpg',
+    image: 'sprite.jpg',
     description: 'La bebida lima-limón más famosa del mundo.',
     price: 2090,
     categoryId: 4,
@@ -354,7 +319,7 @@ export const seedProducts: Product[] = [
   {
     slug: 'coca-cola-sin-azucar',
     name: 'Coca-Cola Sin azúcar',
-    image: 'cocacolasinazucar_1691161244.jpg',
+    image: 'coca-cola-sin-azucar.jpg',
     description: 'La más clásica bebida libre de azúcar.',
     price: 2090,
     categoryId: 4,
@@ -362,7 +327,7 @@ export const seedProducts: Product[] = [
   {
     slug: 'coca-cola-light',
     name: 'Coca-Cola Light',
-    image: 'cocacolalight_1691161198.jpg',
+    image: 'coca-cola-light.jpg',
     description: 'La más clásica bebida libre de calorías.',
     price: 2090,
     categoryId: 4,
@@ -370,7 +335,7 @@ export const seedProducts: Product[] = [
   {
     slug: 'cookie',
     name: 'Cookie',
-    image: 'cookie_1691159338.jpg',
+    image: 'cookie.jpg',
     description:
       'Nuestra más deliciosa galleta recién horneada con chips de chocolate.',
     price: 6790,
@@ -379,7 +344,7 @@ export const seedProducts: Product[] = [
   {
     slug: 'brownie',
     name: 'Brownie',
-    image: 'brownie_1691159308.jpg',
+    image: 'brownie.jpg',
     description:
       'Nuestro delicioso brownie relleno con auténticos chips de chocolate.',
     price: 7490,
@@ -388,7 +353,7 @@ export const seedProducts: Product[] = [
   {
     slug: 'palitos-de-canela',
     name: 'Palitos de canela',
-    image: 'palitosdecanela_1691159186.jpg',
+    image: 'palitos-de-canela.jpg',
     description: 'Nuestros palitos al horno recubiertos de salsa de canela.',
     price: 4590,
     categoryId: 5,
@@ -396,7 +361,7 @@ export const seedProducts: Product[] = [
   {
     slug: 'cinnapie',
     name: 'Cinnapie',
-    image: 'cinnapie_1691159391.jpg',
+    image: 'cinnapie.jpg',
     description: 'Deliciosa masa cubierta mix de cereales y salsa de canela.',
     price: 4690,
     categoryId: 5,
@@ -404,7 +369,7 @@ export const seedProducts: Product[] = [
   {
     slug: 'salsa-de-pizza',
     name: 'Salsa de Pizza',
-    image: 'salsapizza_1571344602.jpg',
+    image: 'salsa-de-pizza.jpg',
     description:
       'Nuestra salsa de tomate natural combina a la perfección con los palitos de ajo.',
     price: 790,
@@ -413,7 +378,7 @@ export const seedProducts: Product[] = [
   {
     slug: 'salsa-bbq',
     name: 'Salsa BBQ',
-    image: 'bbq_1569513448.jpg',
+    image: 'salsa-bbq.jpg',
     description:
       'Combinación dulce y ahumada, complemento perfecto para disfrutar tus Chicken Poppers.',
     price: 790,
@@ -422,7 +387,7 @@ export const seedProducts: Product[] = [
   {
     slug: 'sazonador-especial',
     name: 'Sazonador Especial',
-    image: 'sazonador_1569514203.jpg',
+    image: 'sazonador-especial.jpg',
     description: 'El toque final para tu pizza maestra.',
     price: 790,
     categoryId: 6,
@@ -430,7 +395,7 @@ export const seedProducts: Product[] = [
   {
     slug: 'pepperoncini',
     name: 'Pepperoncini',
-    image: 'pepperoncini_1571344629.jpg',
+    image: 'pepperoncini.jpg',
     description:
       "Es el complemento perfecto para tu pizza solo en Papa John's.",
     price: 790,
@@ -439,7 +404,7 @@ export const seedProducts: Product[] = [
   {
     slug: 'salsa-miel',
     name: 'Salsa Miel',
-    image: 'salsamiel_1571415902.jpg',
+    image: 'salsa-miel.jpg',
     description: 'Deliciosa salsa con sabor a miel.',
     price: 790,
     categoryId: 6,
@@ -447,7 +412,7 @@ export const seedProducts: Product[] = [
   {
     slug: 'salsa-de-ajo',
     name: 'Salsa de ajo',
-    image: 'garlic_1569513844.jpg',
+    image: 'salsa-de-ajo.jpg',
     description:
       'Cremosa y con un toque de sabor inigualable, el complemento perfecto para cualquiera de nuestras pizzas.',
     price: 790,
