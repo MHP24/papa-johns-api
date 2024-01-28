@@ -1,6 +1,8 @@
 import { Controller, Get, Param, Res } from '@nestjs/common';
 import { FilesService } from './files.service';
+import { ApiTags } from '@nestjs/swagger';
 
+@ApiTags('files')
 @Controller('files')
 export class FilesController {
   constructor(private readonly filesService: FilesService) {}
