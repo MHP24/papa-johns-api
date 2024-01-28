@@ -1,3 +1,4 @@
+import { Response } from 'express';
 import { Controller, Get, Param, Res } from '@nestjs/common';
 import { FilesService } from './files.service';
 import { ApiTags } from '@nestjs/swagger';
@@ -9,7 +10,7 @@ export class FilesController {
 
   @Get('/:category/:fileType/:fileName')
   getFile(
-    @Res() res,
+    @Res() res: Response,
     @Param('category') category: string,
     @Param('fileType') fileType: string,
     @Param('fileName') fileName: string,
