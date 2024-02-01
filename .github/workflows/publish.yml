@@ -2,13 +2,12 @@ name: publish
 
 on:
   push:
-    branches: ["main", "dev"]
+    branches: ["main"]
   pull_request:
     branches: ["main"]
 
 jobs:
   create-docker-image:
-    
     runs-on: ubuntu-latest
 
     steps:
@@ -27,6 +26,11 @@ jobs:
           docker build . --tag ghcr.io/mhp24/papa-johns-api:latest
           docker push ghcr.io/mhp24/papa-johns-api:latest  
 
+  deploy:
+    needs: create-docker-image
+    runs-on: ubuntu-latest
+
+    steps:
       - name: Remote SSH deploy
         uses: appleboy/ssh-action@v1.0.0
         with:
