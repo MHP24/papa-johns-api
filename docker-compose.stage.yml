@@ -19,7 +19,7 @@ services:
     restart: always
     depends_on:
       - db
-    container_name: papa_docker
+    container_name: stage_app
     image: ghcr.io/mhp24/papa-johns-api:latest
     env_file:
       - .env.stage
