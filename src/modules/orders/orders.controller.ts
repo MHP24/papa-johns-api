@@ -12,6 +12,8 @@ import { Auth, User } from 'src/common/auth/decorators';
 import type { User as UserT } from '@prisma/client';
 import { ValidRoles } from 'src/common/auth/interfaces';
 import { ApiBearerAuth, ApiTags } from '@nestjs/swagger';
+import { Swagger } from 'src/common/swagger/decorators/swagger.decorator';
+import { ordersDocumentation } from './docs/orders.doc';
 
 @ApiTags('orders')
 @ApiBearerAuth()
@@ -31,6 +33,7 @@ export class OrdersController {
     return this.ordersService.findOrdersByUser(user);
   }
 
+  @Swagger(ordersDocumentation.findByOrderId)
   @Get('/:orderId')
   @Auth()
   findOne(@Param('orderId', ParseUUIDPipe) orderId: string) {
