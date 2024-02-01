@@ -38,4 +38,4 @@ lerna-debug.log*
 etc/
 .env
 .env.stage
-/src/providers/prisma/migrations/*
+prisma/migrations/*

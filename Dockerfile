@@ -15,7 +15,7 @@ RUN yarn build
 FROM node:20.11.0-alpine as execution
 WORKDIR /app
 COPY --from=build /app/dist ./dist
-COPY src/providers/prisma/schema.prisma schema.prisma
+COPY prisma/ ./prisma
 COPY --from=deps /app/node_modules ./node_modules
 COPY package.json package.json
 COPY static/ ./static
