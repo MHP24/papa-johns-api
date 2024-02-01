@@ -6,7 +6,7 @@ export class ProductsService {
   constructor(private readonly prismaService: PrismaService) {}
 
   // * Will return products between range (limit ,offset)
-  async findAll(limit?: string, offset?: string, search?: string) {
+  async findAll(limit?: number, offset?: number, search?: string) {
     const queryLimits = this.validateLimitAndOffset(limit, offset);
 
     const products = await this.prismaService.product.findMany({
@@ -39,7 +39,7 @@ export class ProductsService {
   }
 
   // * Can return more than 1 (supports limit, offset handling)
-  async findByCategory(category: string, limit?: string, offset?: string) {
+  async findByCategory(category: string, limit?: number, offset?: number) {
     const queryLimits = this.validateLimitAndOffset(limit, offset);
 
     const products = await this.prismaService.product.findMany({
@@ -59,9 +59,7 @@ export class ProductsService {
     throw new NotFoundException('Sin resultados');
   }
 
-  validateLimitAndOffset(limit?: string, offset?: string) {
-    const skip = isNaN(+offset) ? 1 : +offset;
-    const take = isNaN(+limit) ? 5 : +limit;
-    return { skip, take };
+  validateLimitAndOffset(limit?: number, offset?: number) {
+    return { skip: offset ?? 1, take: limit ?? 5 };
   }
 }
