@@ -20,7 +20,7 @@ services:
     depends_on:
       - db
     container_name: papa_docker
-    image: papa_docker:latest
+    image: ghcr.io/mhp24/papa-johns-api:latest
     env_file:
       - .env.stage
     ports:
