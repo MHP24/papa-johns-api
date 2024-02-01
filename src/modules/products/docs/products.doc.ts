@@ -5,14 +5,14 @@ const searchOptions = [
   ApiQuery({
     name: 'limit',
     type: Number,
-    required: false,
-    description: 'Limit per product search (default 5)',
+    required: true,
+    description: 'Limit per product search',
   }),
   ApiQuery({
     name: 'offset',
     type: Number,
-    required: false,
-    description: 'Page (default 1)',
+    required: true,
+    description: 'Page number',
   }),
 ];
 
