@@ -3,8 +3,6 @@ name: publish
 on:
   push:
     branches: ["main"]
-  pull_request:
-    branches: ["main"]
 
 jobs:
   create-docker-image:
@@ -23,8 +21,8 @@ jobs:
         
       - name: Build the Docker image
         run: |
-          docker build . --tag ghcr.io/mhp24/papa-johns-api:latest
-          docker push ghcr.io/mhp24/papa-johns-api:latest  
+          docker build . --tag ${{ secrets.DOCKER_PRODUCTION_IMAGE }}
+          docker push ${{ secrets.DOCKER_PRODUCTION_IMAGE }}  
 
   deploy:
     needs: create-docker-image
@@ -43,4 +41,5 @@ jobs:
             docker login ghcr.io -u mhp24 -p ${{ secrets.TOKEN_CD }}
             docker compose -f docker-compose.prod.yml down
             docker container prune -f
+            docker image rm ${{ secrets.DOCKER_PRODUCTION_IMAGE }} -f
             docker compose -f docker-compose.prod.yml up -d
